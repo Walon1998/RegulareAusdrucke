@@ -1,3 +1,6 @@
+
+
+
 public class Main {
     public static void main(String args[]) {
         int k = 2;
@@ -13,10 +16,19 @@ public class Main {
         for (int l = 1; l <= k; l++) {
             for (int m = 0; m < i; m++) {
                 for (int n = 0; n < j; n++) {
-                    T[i][j][k] = T[i][j][k - 1] + " + " + T[i][k - 1][k - 1] + "*" + T[k - 1][k - 1][k - 1] + "^* *" + T[k - 1][j][k - 1];
+//                    T[m][n][l] = T[m][n][l - 1] + " + (" + T[m][l - 1][l - 1] + ") * (" + T[l - 1][l - 1][l - 1] + ")^* * (" + T[l - 1][n][l - 1]+")";
+                    T[m][n][l] = "(" + T[m][n][l - 1] + " + (" + T[m][l - 1][l - 1] + ") (" + T[l - 1][l - 1][l - 1] + ")^* (" + T[l - 1][n][l - 1] + "))";
                 }
             }
         }
-        System.out.print(T[i - 1][j - 1][k]);
+
+
+        for (int l = 0; l <= k; l++) {
+            for (int m = 0; m < i; m++) {
+                for (int n = 0; n < j; n++) {
+                    System.out.println("A_{" + (m + 1) + ", " + (n + 1) + "}^" + l + ":  " + T[m][n][l]);
+                }
+            }
+        }
     }
 }
